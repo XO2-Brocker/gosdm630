@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"time"
+	"strings"
 
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 )
@@ -33,6 +34,7 @@ func (mqttClient *MqttClient) Run() {
 
 		uniqueID := fmt.Sprintf(UniqueIdFormat, snip.DeviceId)
 		topic := fmt.Sprintf("%s/%s/%s", mqttClient.mqttTopic, uniqueID, snip.IEC61850)
+		topic = strings.ReplaceAll(topic, "#", "")
 
 		t := mqttRateMap[topic]
 		now := time.Now()
