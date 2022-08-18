@@ -15,7 +15,7 @@ binaries:
 
 assets:
 	@echo "Generating embedded assets"
-	$(GOPATH)/bin/embed http.go
+	$(GOPATH)/pkg/mod/github.com/aprice/embed@v0.0.0-20181126214606-b9ceb1f6d22d/cmd/embed/embed http.go
 
 release: test clean assets
 	./build.sh
